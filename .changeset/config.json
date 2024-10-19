@@ -1,0 +1,12 @@
+{
+	"$schema": "https://unpkg.com/@changesets/config@3.0.3/schema.json",
+	"changelog": ["@changesets/changelog-github", { "repo": "delucis/better-github-coauthors" }],
+	"commit": false,
+	"access": "restricted",
+	"baseBranch": "latest",
+	"updateInternalDependencies": "patch",
+	"privatePackages": {
+		"version": true,
+		"tag": true
+	}
+}
