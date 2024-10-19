@@ -5,8 +5,8 @@
 	"license": "GPL-3.0",
 	"scripts": {
 		"build": "node ./scripts/build.mjs",
-		"dev:ff": "pnpm dlx web-ext@7 run",
-		"dev:chrome": "pnpm dlx web-ext@7 run --target=chromium"
+		"dev:ff": "pnpm dlx web-ext@8 run",
+		"dev:chrome": "pnpm dlx web-ext@8 run --target=chromium"
 	},
 	"webExt": {
 		"sourceDir": "extension",
