@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
-import pkg from '../package.json' assert { type: 'json' };
-import manifest from '../extension/manifest.json' assert { type: 'json' };
+import pkg from '../package.json' with { type: 'json' };
+import manifest from '../extension/manifest.json' with { type: 'json' };
 
 console.log('Copying source files to dist...');
 await fs.cp('extension', 'dist', { recursive: true });
