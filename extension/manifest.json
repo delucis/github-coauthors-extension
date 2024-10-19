@@ -1,0 +1,22 @@
+{
+	"manifest_version": 3,
+	"name": "Better GitHub Co-Authors",
+	"version": "0.0.0",
+	"description": "Adds a button to GitHub pull requests to make it simple to add co-author credits for all PR participants before merging.",
+	"author": "swithinbank@gmail.com",
+	"icons": {
+		"16": "images/icon-16.png",
+		"32": "images/icon-32.png",
+		"48": "images/icon-48.png",
+		"128": "images/icon-128.png"
+	},
+	"permissions": ["activeTab"],
+	"host_permissions": ["https://api.github.com/*"],
+	"content_scripts": [
+		{
+			"js": ["scripts/content.js"],
+			"matches": ["https://github.com/*"],
+			"exclude_matches": ["https://*/login/*"]
+		}
+	]
+}

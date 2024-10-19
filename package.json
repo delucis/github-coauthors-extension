@@ -1,0 +1,23 @@
+{
+	"name": "better-github-coauthors",
+	"version": "0.0.1",
+	"private": true,
+	"license": "GPL-3.0",
+	"scripts": {
+		"build": "node ./scripts/build.mjs",
+		"dev:ff": "pnpm dlx web-ext@7 run",
+		"dev:chrome": "pnpm dlx web-ext@7 run --target=chromium"
+	},
+	"webExt": {
+		"sourceDir": "extension",
+		"run": {
+			"keepProfileChanges": true,
+			"firefoxProfile": "./resources/web-ext-profile",
+			"chromiumProfile": "./resources/web-ext-profile",
+			"startUrl": [
+				"https://github.com/delucis/better-github-coauthors"
+			]
+		}
+	},
+	"packageManager": "pnpm@9.12.1"
+}
