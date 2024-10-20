@@ -25,7 +25,7 @@ function createCoAuthorsUI() {
 	};
 
 	const button = document.createElement('button');
-	button.textContent = 'Add Co-authors';
+	button.textContent = 'Add co-authors';
 	button.classList.add('Button', 'Button--secondary', 'Button--small');
 	button.type = 'button';
 	button.addEventListener('click', async () => {

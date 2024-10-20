@@ -13,11 +13,11 @@ Browser extension that makes it easier to add co-authors when merging GitHub PRs
 
 ## Usage
 
-This extension shows an <kbd>Add Co-authors</kbd> button in the merge UI on GitHub PRs.
+This extension shows an <kbd>Add co-authors</kbd> button in the merge UI on GitHub PRs.
 
 1. Press the <kbd>Merge pull request</kbd> (or <kbd>Squash and merge</kbd>) button on the PR you want to merge. The UI for editing commit details will appear.
 
-2. Press the <kbd>Add Co-authors</kbd> button. This will collect participants from the PR discussion and add users who reviewed or commented to the extended commit description.
+2. Press the <kbd>Add co-authors</kbd> button. This will collect participants from the PR discussion and add users who reviewed or commented to the extended commit description.
 
 3. Adjust the commit description if you like.
 
