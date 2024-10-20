@@ -30,6 +30,11 @@ This is an open-source repository. You can
 - [Create an issue](https://github.com/delucis/github-to-linear/issues/new/choose) to report a bug or make a feature request.
 - Open a PR to submit changes to the code you made yourself.
 
+## Related
+
+- [coauthor.kevinzunigacuellar.com](https://coauthor.kevinzunigacuellar.com/) — web UI for getting co-authors for a PR
+- [kevinzunigacuellar/coauthor-action](https://github.com/kevinzunigacuellar/coauthor-action) — GitHub Action to get co-author messages as PR comments
+
 ## License
 
 This software is free to use, modify, and redistribute under the [GNU General Public License v3.0](/LICENSE).
