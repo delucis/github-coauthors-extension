@@ -2,14 +2,14 @@
 
 Browser extension that makes it easier to add co-authors when merging GitHub PRs.
 
-<!-- ## Install
+## Install
 
-[link-chrome]: https://chrome.google.com/webstore/detail/github-to-linear/hlambaminaoofejligodincejhcbljik 'Version published on Chrome Web Store'
-[link-firefox]: https://addons.mozilla.org/firefox/addon/github-to-linear/ 'Version published on Mozilla Add-ons'
+[link-chrome]: https://chrome.google.com/webstore/detail/better-github-co-authors/nkemoipciaomkemfjbhfbcokpacdofnb 'Version published on Chrome Web Store'
+<!-- [link-firefox]: https://addons.mozilla.org/firefox/addon/better-github-co-authors/ 'Version published on Mozilla Add-ons' -->
 
-[<img src="https://raw.githubusercontent.com/alrra/browser-logos/90fdf03c/src/chrome/chrome.svg" width="48" alt="Chrome" valign="middle">][link-chrome] [<img valign="middle" src="https://img.shields.io/chrome-web-store/v/hlambaminaoofejligodincejhcbljik.svg?label=%20">][link-chrome] and other Chromium browsers
+[<img src="https://raw.githubusercontent.com/alrra/browser-logos/90fdf03c/src/chrome/chrome.svg" width="48" alt="Chrome" valign="middle">][link-chrome] [<img valign="middle" src="https://img.shields.io/chrome-web-store/v/nkemoipciaomkemfjbhfbcokpacdofnb.svg?label=%20">][link-chrome] and other Chromium browsers
 
-[<img src="https://raw.githubusercontent.com/alrra/browser-logos/90fdf03c/src/firefox/firefox.svg" width="48" alt="Firefox" valign="middle">][link-firefox] [<img valign="middle" src="https://img.shields.io/amo/v/github-to-linear.svg?label=%20">][link-firefox] -->
+<!-- [<img src="https://raw.githubusercontent.com/alrra/browser-logos/90fdf03c/src/firefox/firefox.svg" width="48" alt="Firefox" valign="middle">][link-firefox] [<img valign="middle" src="https://img.shields.io/amo/v/better-github-co-authors?label=%20">][link-firefox] -->
 
 ## Usage
 
