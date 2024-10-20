@@ -5,8 +5,11 @@ addCoAuthorsButtonToMergeForm();
 // Re-run the script when navigating between pages
 document.addEventListener('turbo:render', addCoAuthorsButtonToMergeForm);
 
-/** Create the UI for adding co-authors. */
-function createCoAuthorsUI() {
+/**
+ * Create the UI for adding co-authors.
+ * @param {HTMLElement} root
+ */
+function createCoAuthorsUI(root) {
 	const banner = document.createElement('div');
 	banner.setAttribute('aria-live', 'polite');
 	banner.classList.add('color-fg-subtle');
@@ -33,7 +36,7 @@ function createCoAuthorsUI() {
 		try {
 			const { message, count } = await getCoAuthors();
 			/** @type {HTMLTextAreaElement | null} */
-			const textArea = document.querySelector('textarea[name="commit_message"]');
+			const textArea = root.querySelector('textarea#merge_message_field');
 			if (!textArea) {
 				throw new Error('Couldn’t find commit message <textarea>');
 			}
@@ -118,7 +121,7 @@ function addCoAuthorsButton(root) {
 	if (!commitTitleInput || root.querySelector('[data-coauthors-button]')) {
 		return;
 	}
-	const button = createCoAuthorsUI();
+	const button = createCoAuthorsUI(root);
 	button.setAttribute('data-coauthors-button', '');
 	commitTitleInput.insertAdjacentElement('afterend', button);
 }
