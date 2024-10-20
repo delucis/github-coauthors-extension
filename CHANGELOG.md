@@ -1,5 +1,11 @@
 # better-github-coauthors
 
+## 0.0.3
+
+### Patch Changes
+
+- [`bc0382c`](https://github.com/delucis/better-github-coauthors/commit/bc0382cd891ac9d3dac1d25b0d31ba77a8924171) Thanks [@delucis](https://github.com/delucis)! - Fixes a bug where PRs with review suggestions would not add the co-authors as expected
+
 ## 0.0.2
 
 ### Patch Changes
