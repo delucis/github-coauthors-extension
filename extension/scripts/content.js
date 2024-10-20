@@ -61,24 +61,25 @@ async function getCoAuthors() {
 	const [, owner, repo, _pull, id] = window.location.pathname.split('/');
 	const pullNumber = parseInt(id || '', 10);
 
-	const [prData, commentsData] = await Promise.all([
+	const [prData, comments, reviews] = await Promise.all([
 		fetchGitHubAPI(`/repos/${owner}/${repo}/pulls/${pullNumber}`),
+		fetchGitHubAPI(`/repos/${owner}/${repo}/issues/${pullNumber}/comments`),
 		fetchGitHubAPI(`/repos/${owner}/${repo}/pulls/${pullNumber}/comments`),
 	]);
 
 	const participants = /** @type {Map<string, { name: string; email: string }>} */ (new Map());
 
 	// Add commenters
-	for (const comment of commentsData) {
+	for (const { user } of [...comments, ...reviews]) {
 		// Skip bot comments
-		if (comment.user.type === 'Bot') continue;
+		if (user.type === 'Bot') continue;
 		// Skip PR author
-		if (comment.user.login === prData.user.login) continue;
+		if (user.login === prData.user.login) continue;
 		// Add commenters
-		if (!participants.has(comment.user.login)) {
-			participants.set(comment.user.login, {
-				name: comment.user.name || comment.user.login,
-				email: `${comment.user.id}+${comment.user.login}@users.noreply.github.com`,
+		if (!participants.has(user.login)) {
+			participants.set(user.login, {
+				name: user.name || user.login,
+				email: `${user.id}+${user.login}@users.noreply.github.com`,
 			});
 		}
 	}
