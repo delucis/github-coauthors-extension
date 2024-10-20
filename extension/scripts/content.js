@@ -32,11 +32,15 @@ function createCoAuthorsUI() {
 		displayStatus('Loading co-authors…');
 		try {
 			const { message, count } = await getCoAuthors();
-			const textArea = /** @type {HTMLTextAreaElement | null} */ (
-				document.querySelector('textarea[name="commit_message"]')
-			);
-			if (!textArea) throw new Error('Couldn’t find commit message <textarea>');
+			/** @type {HTMLTextAreaElement | null} */
+			const textArea = document.querySelector('textarea[name="commit_message"]');
+			if (!textArea) {
+				throw new Error('Couldn’t find commit message <textarea>');
+			}
+			// Append co-authors to textarea content.
 			textArea.value = (textArea.value + '\n\n' + message).trim();
+			// Notify event listeners that the <textarea> content changed.
+			textArea.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
 
 			if (count === 0) {
 				displayStatus('Found no co-authors to add');
