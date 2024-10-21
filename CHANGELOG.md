@@ -1,5 +1,11 @@
 # better-github-coauthors
 
+## 0.0.4
+
+### Patch Changes
+
+- [`047fc51`](https://github.com/delucis/better-github-coauthors/commit/047fc516139234b753b70e45ec316f6e8ce7b395) Thanks [@delucis](https://github.com/delucis)! - Fixes missing co-author credits for people leaving a review without sub-comments
+
 ## 0.0.3
 
 ### Patch Changes
