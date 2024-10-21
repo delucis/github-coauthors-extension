@@ -68,16 +68,17 @@ async function getCoAuthors() {
 	const [, owner, repo, _pull, id] = window.location.pathname.split('/');
 	const pullNumber = parseInt(id || '', 10);
 
-	const [prData, comments, reviews] = await Promise.all([
+	const [prData, comments, reviewComments, reviews] = await Promise.all([
 		fetchGitHubAPI(`/repos/${owner}/${repo}/pulls/${pullNumber}`),
 		fetchGitHubAPI(`/repos/${owner}/${repo}/issues/${pullNumber}/comments`),
 		fetchGitHubAPI(`/repos/${owner}/${repo}/pulls/${pullNumber}/comments`),
+		fetchGitHubAPI(`/repos/${owner}/${repo}/pulls/${pullNumber}/reviews`),
 	]);
 
 	const participants = /** @type {Map<string, { name: string; email: string }>} */ (new Map());
 
 	// Add commenters
-	for (const { user } of [...comments, ...reviews]) {
+	for (const { user } of [...comments, ...reviewComments, ...reviews]) {
 		// Skip bot comments
 		if (user.type === 'Bot') continue;
 		// Skip PR author
