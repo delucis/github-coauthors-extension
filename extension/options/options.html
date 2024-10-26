@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Better GitHub Co-Authors — Options</title>
+    <style>
+      form {
+        align-items: center;
+        display: grid;
+        gap: 0.5rem 1rem;
+        grid-template-columns: auto 1fr;
+        justify-self: start;
+      }
+
+      form button {
+        grid-column: span 2;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <label for="stripExistingCoAuthors">Strip existing co-authors</label>
+      <input
+        id="stripExistingCoAuthors"
+        name="stripExistingCoAuthors"
+        type="checkbox"
+      />
+      <button type="submit">Save</button>
+    </form>
+    <script src="../shared/settings.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

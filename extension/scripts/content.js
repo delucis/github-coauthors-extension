@@ -40,6 +40,12 @@ function createCoAuthorsUI(root) {
 			if (!textArea) {
 				throw new Error('Couldn’t find commit message <textarea>');
 			}
+			const settings = await getSettings();
+			// If enabled and we have co-authors to add, strip any existing co-authors from the textarea.
+			if (settings.stripExistingCoAuthors && count > 0) {
+				const coAuthorRegex = /^Co-authored-by:/i;
+				textArea.value = textArea.value.split('\n').filter((line) => !coAuthorRegex.test(line)).join('\n');
+			}
 			// Append co-authors to textarea content.
 			textArea.value = (textArea.value + '\n\n' + message).trim();
 			// Notify event listeners that the <textarea> content changed.
