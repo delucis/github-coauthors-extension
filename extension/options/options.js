@@ -9,6 +9,8 @@ async function loadOptions() {
   /** @type {HTMLInputElement!} */ (
     document.getElementById("stripExistingCoAuthors")
   ).checked = settings.stripExistingCoAuthors;
+  /** @type {HTMLInputElement!} */ (document.getElementById("token")).value =
+    settings.token;
 }
 
 /** @param {SubmitEvent} event */
@@ -21,8 +23,9 @@ async function handleSubmit(event) {
     .split(",")
     .map((s) => s.trim());
   const stripExistingCoAuthors = data.get("stripExistingCoAuthors") === "on";
+  const token = String(data.get("token"));
 
-  await saveSettings({ ignoredCoAuthors, stripExistingCoAuthors });
+  await saveSettings({ ignoredCoAuthors, stripExistingCoAuthors, token });
 }
 
 document.addEventListener("DOMContentLoaded", loadOptions);

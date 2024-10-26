@@ -5,6 +5,7 @@
  * @typedef Settings
  * @property {string[]} ignoredCoAuthors
  * @property {boolean} stripExistingCoAuthors
+ * @property {string} token
  */
 
 /**
@@ -14,6 +15,7 @@ function getSettings() {
   return chrome.storage.local.get({
     ignoredCoAuthors: [],
     stripExistingCoAuthors: false,
+    token: "",
   });
 }
 

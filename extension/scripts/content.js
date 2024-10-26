@@ -78,10 +78,10 @@ async function getCoAuthors(settings) {
 	const pullNumber = parseInt(id || '', 10);
 
 	const [prData, comments, reviewComments, reviews] = await Promise.all([
-		fetchGitHubAPI(`/repos/${owner}/${repo}/pulls/${pullNumber}`),
-		fetchGitHubAPI(`/repos/${owner}/${repo}/issues/${pullNumber}/comments`),
-		fetchGitHubAPI(`/repos/${owner}/${repo}/pulls/${pullNumber}/comments`),
-		fetchGitHubAPI(`/repos/${owner}/${repo}/pulls/${pullNumber}/reviews`),
+		fetchGitHubAPI(`/repos/${owner}/${repo}/pulls/${pullNumber}`, settings),
+		fetchGitHubAPI(`/repos/${owner}/${repo}/issues/${pullNumber}/comments`, settings),
+		fetchGitHubAPI(`/repos/${owner}/${repo}/pulls/${pullNumber}/comments`, settings),
+		fetchGitHubAPI(`/repos/${owner}/${repo}/pulls/${pullNumber}/reviews`, settings),
 	]);
 
 	const participants = /** @type {Map<string, { name: string; email: string }>} */ (new Map());
@@ -111,11 +111,15 @@ async function getCoAuthors(settings) {
  * Simple wrapper around `fetch()` for making GitHub API requests, e.g. `fetchGitHubAPI('/repos/withastro')`.
  * Throws an error if the fetch does not succeed.
  * @param {string} endpoint GitHub API endpoint to fetch
+ * @param {Settings} settings
  */
-async function fetchGitHubAPI(endpoint) {
-	const response = await fetch(`https://api.github.com${endpoint}`, {
-		headers: { Accept: 'application/vnd.github.v3+json' },
-	});
+async function fetchGitHubAPI(endpoint, settings) {
+	const headers = new Headers();
+	headers.append('Accept', 'application/vnd.github.v3+json');
+	if (settings.token) {
+		headers.append('Authorization', `Bearer ${settings.token}`);
+	}
+	const response = await fetch(`https://api.github.com${endpoint}`, { headers });
 	if (!response.ok) {
 		throw new Error(`GitHub API request failed: ${response.statusText}`);
 	}
