@@ -3,6 +3,7 @@
 
 /**
  * @typedef Settings
+ * @property {string[]} ignoredCoAuthors
  * @property {boolean} stripExistingCoAuthors
  */
 
@@ -10,7 +11,10 @@
  * @return {Promise<Settings>}
  */
 function getSettings() {
-  return chrome.storage.local.get({ stripExistingCoAuthors: false });
+  return chrome.storage.local.get({
+    ignoredCoAuthors: [],
+    stripExistingCoAuthors: false,
+  });
 }
 
 /**

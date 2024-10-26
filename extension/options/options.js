@@ -4,6 +4,9 @@ async function loadOptions() {
   const settings = await getSettings();
 
   /** @type {HTMLInputElement!} */ (
+    document.getElementById("ignoredCoAuthors")
+  ).value = settings.ignoredCoAuthors.join(", ");
+  /** @type {HTMLInputElement!} */ (
     document.getElementById("stripExistingCoAuthors")
   ).checked = settings.stripExistingCoAuthors;
 }
@@ -14,9 +17,12 @@ async function handleSubmit(event) {
   event.preventDefault();
   const data = new FormData(event.target);
 
+  const ignoredCoAuthors = String(data.get("ignoredCoAuthors"))
+    .split(",")
+    .map((s) => s.trim());
   const stripExistingCoAuthors = data.get("stripExistingCoAuthors") === "on";
 
-  await saveSettings({ stripExistingCoAuthors });
+  await saveSettings({ ignoredCoAuthors, stripExistingCoAuthors });
 }
 
 document.addEventListener("DOMContentLoaded", loadOptions);

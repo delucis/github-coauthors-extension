@@ -34,13 +34,13 @@ function createCoAuthorsUI(root) {
 	button.addEventListener('click', async () => {
 		displayStatus('Loading co-authors…');
 		try {
-			const { message, count } = await getCoAuthors();
+			const settings = await getSettings();
+			const { message, count } = await getCoAuthors(settings);
 			/** @type {HTMLTextAreaElement | null} */
 			const textArea = root.querySelector('textarea#merge_message_field');
 			if (!textArea) {
 				throw new Error('Couldn’t find commit message <textarea>');
 			}
-			const settings = await getSettings();
 			// If enabled and we have co-authors to add, strip any existing co-authors from the textarea.
 			if (settings.stripExistingCoAuthors && count > 0) {
 				const coAuthorRegex = /^Co-authored-by:/i;
@@ -69,8 +69,11 @@ function createCoAuthorsUI(root) {
 	return container;
 }
 
-/** Get participants for the current PR and generate `Co-authored-by` messages for them. */
-async function getCoAuthors() {
+/**
+ * Get participants for the current PR and generate `Co-authored-by` messages for them.
+ * @param {Settings} settings
+ */
+async function getCoAuthors(settings) {
 	const [, owner, repo, _pull, id] = window.location.pathname.split('/');
 	const pullNumber = parseInt(id || '', 10);
 
@@ -89,8 +92,8 @@ async function getCoAuthors() {
 		if (user.type === 'Bot') continue;
 		// Skip PR author
 		if (user.login === prData.user.login) continue;
-		// Add commenters
-		if (!participants.has(user.login)) {
+		// Add commenters if not ignored
+		if (!participants.has(user.login) && !settings.ignoredCoAuthors.includes(user.login)) {
 			participants.set(user.login, {
 				name: user.name || user.login,
 				email: `${user.id}+${user.login}@users.noreply.github.com`,
