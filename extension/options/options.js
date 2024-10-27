@@ -1,4 +1,5 @@
 // @ts-check
+/// <reference path="../shared/settings.js" />
 
 async function loadOptions() {
   const settings = await getSettings();

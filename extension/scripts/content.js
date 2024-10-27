@@ -1,4 +1,5 @@
 // @ts-check
+/// <reference path="../shared/settings.js" />
 
 // Run the script
 addCoAuthorsButtonToMergeForm();
